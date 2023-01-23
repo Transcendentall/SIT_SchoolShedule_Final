@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style3.css"/>
+    <title>Кабинеты - расписание</title>
+    {% import "macros3.html" as macros3 %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href={{ url_for("index1") }}>Расписание для классов</a></li>
+        <li class=active><a href={{ url_for("index2") }}>Расписание для преподавателей</a></li>
+        <li class=active><a href={{ url_for("index3") }}>Расписание для кабинетов</a></li>
+    </ul>
+</div>
+<div class=block>
+    <zagolovok><b>СОСТАВЛЕНИЕ РАСПИСАНИЯ НА НЕДЕЛЮ ДЛЯ КАБИНЕТА</b></zagolovok>
+    <p>
+    <form action='' method="get">
+        Выбери кабинет:
+        <!-- Создаем поле со списком с именем reader
+        (использовать макрос, созданный в ЛР 5 -->
+        {{ macros3.render_readers(combo_box, reader_id, len) }}
+        <input type="submit" value="Показать расписание">
+    </form>
+    </p>
+    </p>
+
+
+
+
+    <form action="{{ url_for('new_class') }}" method="get">
+        <input type="submit" value="Добавить новый класс">
+    </form>
+    <form action="{{ url_for('new_subject') }}" method="get">
+        <input type="submit" value="Добавить новый предмет">
+    </form>
+    <form action="{{ url_for('new_teacher') }}" method="get">
+        <input type="submit" value="Добавить нового преподавателя">
+    </form>
+    <form action="{{ url_for('new_cabinet') }}" method="get">
+        <input type="submit" value="Добавить новый кабинет">
+    </form>
+
+
+
+
+
+    </p>
+    {{ macros3.render_table("Понедельник", cabinet_found, "cabinet_found_id", len) }}
+    </p>
+    </p>
+    {{ macros3.render_table("Вторник", cabinet_found2, "cabinet_found_id2", len) }}
+    </p>
+    </p>
+    {{ macros3.render_table("Среда", cabinet_found3, "cabinet_found_id3", len) }}
+    </p>
+    </p>
+    {{ macros3.render_table("Четверг", cabinet_found4, "cabinet_found_id4", len) }}
+    </p>
+    </p>
+    {{ macros3.render_table("Пятница", cabinet_found5, "cabinet_found_id5", len) }}
+    </p>
+    </p>
+</div>
+
+</body>
+</html>

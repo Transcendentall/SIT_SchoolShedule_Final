@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/CSS/style3.css"/>
+    <title>Новый кабинет</title>
+    {% import "macros1.html" as macros1 %}
+</head>
+<body>
+<div class=menu>
+    <ul>
+        <li class=active><a href={{ url_for("index1") }}>Расписание для классов</a></li>
+        <li class=active><a href={{ url_for("index2") }}>Расписание для преподавателей</a></li>
+        <li class=active><a href={{ url_for("index3") }}>Расписание для кабинетов</a></li>
+    </ul>
+</div>
+<div class=block>
+    <form action="{{ url_for('index1') }}" method="get">
+        <p>
+            <label>
+                Название (номер) кабинета:
+                <input type="text" name="new_cabinet" required>
+            </label>
+        </p>
+        <p>
+            <input type="submit" value="Добавить новый кабинет в базу данных">
+            <input type="button" onclick="window.location='{{ url_for('index1') }}'" value="Отменить">
+        </p>
+    </form>
+</div>
+</body>
+</html>
